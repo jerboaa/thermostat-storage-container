@@ -25,11 +25,11 @@ Usage
 
 First, build the Thermostat Storage Builder image:
 
-$ sudo docker build -t thermostat-storage-builder .
+    $ sudo docker build -t thermostat-storage-builder .
 
 Next, build the Thermostat Storage image, `thermostat-storage` like so:
 
-$ sudo s2i build https://github.com/jerboaa/thermostat thermostat-storage-builder thermostat-storage
+    $ sudo s2i build https://github.com/jerboaa/thermostat thermostat-storage-builder thermostat-storage
 
 To run Thermostat Storage connected to some other mongodb backend (e.g. provided by
 another container) supply the mongodb url, mongo username/passwords and the agent/client
