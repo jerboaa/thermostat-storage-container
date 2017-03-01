@@ -1,0 +1,22 @@
+#!/bin/bash
+
+echo "---> Installing Thermostat Storage source ..."
+mv /tmp/src/* ./
+
+echo "---> Building Thermostat Storage ..."
+mvn -Dmaven.test.skip=true clean package
+if [ $? -ne 0 ]; then
+  echo "Build failed. Abort."
+  exit 1
+fi
+
+echo "---> Installing Thermostat Storage in /opt/app-root/bin ..."
+cp -r distribution/target/image/* ${THERMOSTAT_HOME}
+ln -s ${THERMOSTAT_HOME}/bin /opt/app-root/bin
+fix-permissions ${THERMOSTAT_HOME}
+
+echo "---> Cleaning up build artefacts ..."
+mvn clean
+
+rm -rf /tmp/hsperfdata_*
+exit 0
