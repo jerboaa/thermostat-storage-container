@@ -25,11 +25,11 @@ Usage
 
 First, build the Thermostat Storage Builder image:
 
-    $ sudo docker build -t thermostat-storage-builder .
+    $ sudo docker build -t icedtea/thermostat-storage-builder-centos7 .
 
-Next, build the Thermostat Storage image, `thermostat-storage` like so:
+Next, build the Thermostat Storage image, `icedtea/thermostat-storage-centos7` like so:
 
-    $ sudo s2i build https://github.com/jerboaa/thermostat thermostat-storage-builder thermostat-storage
+    $ sudo s2i build https://github.com/jerboaa/thermostat icedtea/thermostat-storage-builder-centos7 icedtea/thermostat-storage-centos7
 
 To run Thermostat Storage connected to some other mongodb backend (e.g. provided by
 another container) supply the mongodb url, mongo username/passwords and the agent/client
@@ -45,7 +45,7 @@ $ docker run -d \
              -e THERMOSTAT_CLIENT_USERNAMES="clientuser1 clientuser2" \
              -e THERMOSTAT_CLIENT_PASSWORDS="clientpass1 clientpass2" \
              --name thermostat-storage-app \
-             thermostat-storage
+             icedtea/thermostat-storage-centos7
 ```
 
 This will run a container with the http layer connected to the mongodb url using

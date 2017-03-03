@@ -6,9 +6,6 @@
 # BUILDER_IMAGE_NAME specifies the name of the builder image. I.e.
 # the candidate image to be used for testing.
 #
-# IMAGE_NAME specifies a name of the image used for testing.
-# The image has to be available before this script is executed.
-#
 # MONGODB_IMAGE specifies the name of the mongodb image to use for
 # backing storage. Should be one of rhscl/mongodb-32-rhel7 or
 # centos/mongodb-32-centos7
@@ -23,8 +20,8 @@ if [ "$DEBUG" != "" ]; then
   set -x
 fi
 
-BUILDER_IMAGE_NAME=${BUILDER_IMAGE_NAME:-thermost4t/thermostat-storage-builder}
-IMAGE_NAME=${IMAGE_NAME:-thermost4t/thermostat-storage}
+BUILDER_IMAGE_NAME=${BUILDER_IMAGE_NAME:-icedtea/thermostat-storage-builder-centos7}
+IMAGE_NAME="icedtea/thermostat-storage-centos7"
 MONGODB_IMAGE=${MONGODB_IMAGE:-centos/mongodb-32-centos7}
 
 MONGO_USER=mongo

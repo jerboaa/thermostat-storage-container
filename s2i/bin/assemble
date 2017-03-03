@@ -13,7 +13,11 @@ fi
 echo "---> Installing Thermostat Storage in /opt/app-root/bin ..."
 cp -r distribution/target/image/* ${THERMOSTAT_HOME}
 ln -s ${THERMOSTAT_HOME}/bin /opt/app-root/bin
+# Run thermostat --version in order to produce basic directory
+# structure. Then fix up permissions.
+${THERMOSTAT_HOME}/bin/thermostat --version > /dev/null
 fix-permissions ${THERMOSTAT_HOME}
+fix-permissions ${USER_THERMOSTAT_HOME}
 
 echo "---> Cleaning up build artefacts ..."
 mvn clean
