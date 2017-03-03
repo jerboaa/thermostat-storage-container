@@ -17,7 +17,7 @@ if [ "x${USER_ID}" != "x0" -a "x${RESOLVABLE_USER}" == "xfalse" ]; then
     NSS_WRAPPER_PASSWD=/opt/app-root/etc/passwd
     NSS_WRAPPER_GROUP=/etc/group
 
-    cat /etc/passwd | sed -e 's/^${UNAME}:/${UNAME}-orig:/' > $NSS_WRAPPER_PASSWD
+    cat /etc/passwd | sed -e "s/^${UNAME}:/${UNAME}-orig:/" > $NSS_WRAPPER_PASSWD
 
     echo "${UNAME}:x:${USER_ID}:${GROUP_ID}:Default Application User:${HOME}:/sbin/nologin" >> $NSS_WRAPPER_PASSWD
 
